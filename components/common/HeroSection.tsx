@@ -1,7 +1,5 @@
 'use client';
 import { ReactNode, useEffect, useState } from 'react';
-import curve from "@/public/assets/svg/curve.svg"
-import Image from 'next/image';
 
 interface FixedImageHeroProps {
   imageUrl: any;
@@ -17,15 +15,15 @@ export default function FixedImageHero({
   title,
   subtitle,
   children,
-  overlayOpacity = 0.5
+  overlayOpacity = 0.4
 }: FixedImageHeroProps) {
-    const [height, setHeight] = useState("100vh");
+    const [height, setHeight] = useState("60vh");
       useEffect(() => {
     const updateHeight = () => {
       const width = window.innerWidth;
-      if (width < 640) setHeight("30vh");
-      else if (width < 1024) setHeight("80vh");
-      else setHeight("100vh");
+      if (width < 640) setHeight("40vh");
+      else if (width < 1024) setHeight("50vh");
+      else setHeight("60vh");
     };
 
     updateHeight();
@@ -37,7 +35,7 @@ export default function FixedImageHero({
       
       {/* Background Image */}
       <div 
-        className="absolute left-0 top-0 w-full h-full sm:w-11 sm:h-10"
+        className="absolute left-0 top-0 w-full h-full"
         style={{ backgroundImage: `url(${imageUrl})`,backgroundSize: 'cover' }}
       />
 
@@ -50,7 +48,7 @@ export default function FixedImageHero({
       {/* Text Content */}
       <div className="relative z-10 flex h-full w-full flex-col items-center justify-center text-white px-4">
         <div className="text-center max-w-4xl">
-          <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl drop-shadow-lg">
+          <h1 className="text-4xl font-bold md:text-4xl lg:text-4xl drop-shadow-lg text-white">
             {title}
           </h1>
           {subtitle && (

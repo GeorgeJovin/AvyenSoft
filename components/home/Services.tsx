@@ -1,56 +1,56 @@
 'use client';
 
-import { Target, TrendingUp, Settings, Zap } from 'lucide-react';
+import { TrendingUp, DollarSign, BarChart3, Sliders } from 'lucide-react';
 
 const Services = () => {
   const services = [
     {
-      icon: Target,
-      title: 'Strategic Planning',
-      description: 'Comprehensive strategic planning services to align your business goals with actionable roadmaps.',
-    },
-    {
       icon: TrendingUp,
-      title: 'Business Planning',
-      description: 'Expert business planning solutions to drive growth and optimize operations.',
+      title: 'Strategic Planning:',
+      description: 'Crafting forward-looking strategies to align your vision with market dynamics, ensuring long-term success',
     },
     {
-      icon: Settings,
-      title: 'Process Improvement',
-      description: 'Streamline operations and enhance efficiency through proven process improvement methodologies.',
+      icon: DollarSign,
+      title: 'Business Planning:',
+      description: 'Developing robust plans tailored to your operational and financial goals, enabling smarter decision-making and resource allocation.',
     },
     {
-      icon: Zap,
-      title: 'Technology Integration',
-      description: 'Seamless technology integration to modernize your business infrastructure.',
+      icon: BarChart3,
+      title: 'Process Improvement:',
+      description: 'Enhancing efficiency by identifying bottlenecks and implementing cutting-edge solutions to optimize workflows and outcomes.',
+    },
+    {
+      icon: Sliders,
+      title: 'Technology Integration:',
+      description: 'Leveraging the latest innovations to transform business processes and deliver measurable results.',
     },
   ];
 
   return (
-    <section id="services" className="py-20 bg-white">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1a2744] mb-4">
-            Our Core Expertise
+    <section className="py-16 md:py-20 bg-gray-100">
+      <div className="container mx-auto px-4 md:px-8 max-w-7xl">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-4xl font-bold text-black mb-4 md:mb-6">
+            Our Expertise:
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            We deliver comprehensive consulting services designed to transform your business
+          <p className="text-base md:text-[14px] text-black max-w-4xl mx-auto leading-relaxed px-4">
+            We take pride in offering a wide range of consulting services designed to address the unique challenges of modern businesses. With a commitment to excellence, we help organizations navigate complexities and seize new opportunities. Our core services include:
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-4 max-w-6xl mx-auto">
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100"
+              className="bg-[#5E6FB5] rounded-2xl p-4 md:p-4 text-center text-white shadow-lg"
             >
-              <div className="w-16 h-16 bg-[#5e6fb5]/10 rounded-lg flex items-center justify-center mb-6">
-                <service.icon className="text-[#5e6fb5]" size={32} />
+              <div className="flex justify-center mb-4">
+                <service.icon size={40} strokeWidth={1.5} />
               </div>
-              <h3 className="text-xl font-semibold text-[#1a2744] mb-3">
+              <h3 className="text-xl md:text-lg font-bold mb-4 text-white">
                 {service.title}
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-base md:text-[14px] leading-relaxed text-white">
                 {service.description}
               </p>
             </div>

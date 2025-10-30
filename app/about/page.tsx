@@ -1,7 +1,7 @@
-import AboutHero from '@/components/about/AboutHero';
-import Mission from '@/components/about/Mission';
+import Expertise from "@/components/about/OurExpertise";
+import Solutions from "@/components/about/OurSolutions";
 import WhyChooseUs from '@/components/about/WhyChooseUs';
-import CTA from '@/components/home/CTA';
+import FixedImageHero from "@/components/common/HeroSection";
 
 export const metadata = {
   title: 'About Us - Ayven Soft',
@@ -11,7 +11,10 @@ export const metadata = {
 export default function About() {
   return (
     <>
-      <AboutHero />
+    <FixedImageHero imageUrl={"https://ayvensoft.com/wp-content/uploads/2024/11/contact-us-bg.webp"} title="About-Us"/>
+    <Expertise/>
+    <Solutions/>
+    <WhyChooseUs/>
     </>
   );
 }

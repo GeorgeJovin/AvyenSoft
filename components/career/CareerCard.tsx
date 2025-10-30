@@ -26,7 +26,7 @@ Collaborate with analysts and stakeholders to deliver high-quality data solution
   ];
 
   return (
-    <section className="bg-gray-50 py-20 px-4 lg:px-20">
+    <section className="bg-gray-50 py-20 px-4 lg:px-20 mt-10">
       <div className="max-w-6xl mx-auto space-y-8">
         {careersData.map((item, index) => (
           <div
