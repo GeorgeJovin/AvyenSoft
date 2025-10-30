@@ -13,7 +13,7 @@ const Footer = () => {
         }}
       />
       <div className="container mx-auto px-4 lg:px-8 py-12 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <h3 className="text-xl font-bold mb-4 text-white">Avyen Soft</h3>
             <p className="text-gray-300 text-sm leading-relaxed mb-6">
@@ -41,57 +41,27 @@ const Footer = () => {
             </div>
           </div>
 
-          <div>
-            <h4 className="text-lg font-semibold mb-4 text-white">Quick Links</h4>
-            <ul className="space-y-3">
-              <li>
-                <Link href="/career" className="text-gray-300 hover:text-white transition-colors text-sm">
-                  Career
-                </Link>
-              </li>
-              <li>
-                <Link href="/privacy-policy" className="text-gray-300 hover:text-white transition-colors text-sm">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms-of-use" className="text-gray-300 hover:text-white transition-colors text-sm">
-                  Terms of Use
-                </Link>
-              </li>
-              <li>
-                <Link href="/disclaimer" className="text-gray-300 hover:text-white transition-colors text-sm">
-                  Disclaimer
-                </Link>
-              </li>
-            </ul>
-          </div>
+          <div className="sm:col-span-2 grid grid-cols-2 gap-8">
+    <div>
+      <h4 className="text-lg font-semibold mb-4 text-white">Quick Links</h4>
+      <ul className="space-y-3">
+        <li><Link href="/career" className="text-gray-300 hover:text-white text-sm">Career</Link></li>
+        <li><Link href="/privacy-policy" className="text-gray-300 hover:text-white text-sm">Privacy Policy</Link></li>
+        <li><Link href="/terms-of-use" className="text-gray-300 hover:text-white text-sm">Terms of Use</Link></li>
+        <li><Link href="/disclaimer" className="text-gray-300 hover:text-white text-sm">Disclaimer</Link></li>
+      </ul>
+    </div>
 
-          <div>
-            <h4 className="text-lg font-semibold mb-4 text-white">Company</h4>
-            <ul className="space-y-3">
-              <li>
-                <Link href="/" className="text-gray-300 hover:text-white transition-colors text-sm">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="text-gray-300 hover:text-white transition-colors text-sm">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="text-gray-300 hover:text-white transition-colors text-sm">
-                  Our Services
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-gray-300 hover:text-white transition-colors text-sm">
-                  Contact Us
-                </Link>
-              </li>
-            </ul>
-          </div>
+    <div>
+      <h4 className="text-lg font-semibold mb-4 text-white">Company</h4>
+      <ul className="space-y-3">
+        <li><Link href="/" className="text-gray-300 hover:text-white text-sm">Home</Link></li>
+        <li><Link href="/about" className="text-gray-300 hover:text-white text-sm">About Us</Link></li>
+        <li><Link href="/services" className="text-gray-300 hover:text-white text-sm">Our Services</Link></li>
+        <li><Link href="/contact" className="text-gray-300 hover:text-white text-sm">Contact Us</Link></li>
+      </ul>
+    </div>
+  </div>
 
           <div>
             <h4 className="text-lg font-semibold mb-4 text-white">Contact</h4>

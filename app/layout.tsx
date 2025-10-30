@@ -29,7 +29,7 @@ export default function RootLayout({
           }}
         >
           <Header />
-          <main>{children}</main>
+          <main style={{overflowX : "hidden"}}>{children}</main>
           <Footer />
         </ConfigProvider>
       </body>
