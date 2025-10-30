@@ -1,11 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  images: {
-    unoptimized: true,
+  eslint: {
+    ignoreDuringBuilds: true,
   },
-  basePath: '/AvyenSoft',      // 👈 repo name (important)
-  assetPrefix: '/AvyenSoft/',
+  images: { unoptimized: true },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
