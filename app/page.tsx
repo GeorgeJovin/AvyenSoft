@@ -7,11 +7,11 @@ import CTA from '@/components/home/CTA';
 export default function Home() {
   return (
     <>
-      <Hero />
+      {/* <Hero />
       <Services />
       <Technologies />
       <Clients />
-      <CTA />
+      <CTA /> */}
     </>
   );
 }

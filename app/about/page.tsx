@@ -12,9 +12,6 @@ export default function About() {
   return (
     <>
       <AboutHero />
-      <Mission />
-      <WhyChooseUs />
-      <CTA />
     </>
   );
 }

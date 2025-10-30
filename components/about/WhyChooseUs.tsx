@@ -1,40 +1,50 @@
 'use client';
 
 import { CheckCircle } from 'lucide-react';
+import Image from 'next/image';
 
 const WhyChooseUs = () => {
-  const reasons = [
-    'Proven track record with Fortune 500 companies',
-    'Expert team with decades of combined experience',
-    'Comprehensive end-to-end solutions',
-    'Cutting-edge technology expertise',
-    'Client-focused approach',
-    'Measurable results and ROI',
-    'Flexible engagement models',
-    'Industry-leading best practices',
-  ];
+
 
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1a2744] mb-12 text-center">
-            Why Choose Ayven Soft?
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {reasons.map((reason, index) => (
-              <div
-                key={index}
-                className="flex items-start space-x-3 bg-white p-4 rounded-lg hover:shadow-md transition-all"
-              >
-                <CheckCircle className="text-[#5e6fb5] flex-shrink-0 mt-1" size={24} />
-                <p className="text-gray-700 font-medium">{reason}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
+<section className="bg-gray-50 py-20">
+  <div className="flex flex-col lg:flex-row items-stretch px-[30px] gap-12">
+    
+    {/* LEFT: IMAGE */}
+    <div className="w-full lg:w-1/2 h-[300px] sm:h-[400px] lg:h-auto">
+      <Image
+        src="/assets/chooseUs.jpg"
+        alt="Why Choose Us"
+        width={800}
+        height={900}
+        className="rounded-2xl w-full h-full"
+      />
+    </div>
+
+    {/* RIGHT: CONTENT */}
+    <div className="w-full lg:w-1/2 flex flex-col justify-center">
+      <h2 className="text-3xl font-bold text-gray-900 mb-6">
+        Why Choose Us?
+      </h2>
+      <p className="text-gray-700 leading-relaxed mb-4">
+        Our team of experts brings decades of experience across various industries, 
+        from manufacturing to services. By fostering collaboration and innovation, 
+        we have helped countless clients achieve their goals. Our commitment to 
+        quality and client satisfaction sets us apart, making Ayven Soft the 
+        preferred choice for businesses seeking strategic growth.
+      </p>
+
+      <h3 className="text-lg font-semibold text-gray-900 mb-2">
+        Driving Success Across Industries:
+      </h3>
+      <p className="text-gray-700 leading-relaxed">
+        Whether it’s introducing scalable solutions for small and medium enterprises 
+        or revolutionizing operations for large corporations, our track record of 
+        success is a testament to our expertise and dedication.
+      </p>
+    </div>
+  </div>
+</section>
   );
 };
 
