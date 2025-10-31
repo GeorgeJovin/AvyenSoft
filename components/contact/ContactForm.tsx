@@ -26,7 +26,7 @@ const ContactForm = () => {
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
-        <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-[55%_42%] gap-8">
           {/* Left Column - Form */}
           <div className="bg-gray-100 p-8 rounded-2xl" style={{backgroundColor:'#EDF4F2'}}>
             <h2 className="text-3xl font-bold text-black mb-4">
