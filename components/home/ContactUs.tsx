@@ -114,7 +114,7 @@ const ContactForm = () => {
                 {/* Submit Button */}
                 <button
                   onClick={handleSubmit}
-                  className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-4 rounded-full transition-colors duration-300 shadow-md hover:shadow-lg cursor-pointer text-base uppercase tracking-wider"
+                  className="w-full bg-[rgb(94,111,181)] text-white font-semibold py-4 rounded-full transition-colors duration-300 cursor-pointer text-base uppercase tracking-wider"
                 >
                   SEND
                 </button>
