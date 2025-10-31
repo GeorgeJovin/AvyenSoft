@@ -139,7 +139,7 @@ const ContactSection = () => {
                         <p className="text-gray-700 text-sm text-center flex-grow mb-6">
                           {service.description}
                         </p>
-                        <button className="w-full bg-sky-400 hover:bg-sky-500 text-white font-semibold py-3 rounded-lg transition-colors duration-300">
+                        <button className="w-full bg-sky-400 hover:bg-sky-500 text-white font-semibold py-2 rounded-lg transition-colors duration-300">
                           Read More
                         </button>
                       </div>
@@ -202,7 +202,7 @@ const ContactSection = () => {
             >
               {services.map((service, index) => (
                 <div key={index} className="w-full flex-shrink-0 px-4">
-                  <div className="bg-white rounded-2xl p-6 shadow-2xl">
+                  <div className="bg-white rounded-2xl p-4 shadow-2xl h-full">
                     <div className="mb-6">{service.icon}</div>
                     <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">
                       {service.title}
@@ -210,7 +210,7 @@ const ContactSection = () => {
                     <p className="text-gray-700 text-base text-center mb-8">
                       {service.description}
                     </p>
-                    <button className="w-full bg-sky-400 hover:bg-sky-500 text-white font-semibold py-4 rounded-lg transition-colors duration-300">
+                    <button className="w-full bg-sky-400 hover:bg-sky-500 text-white font-semibold py-2 rounded-lg transition-colors duration-300">
                       Read More
                     </button>
                   </div>

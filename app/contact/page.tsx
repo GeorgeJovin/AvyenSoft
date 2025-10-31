@@ -1,5 +1,6 @@
 import ContactHero from '@/components/contact/ContactHero';
 import ContactForm from '@/components/contact/ContactForm';
+import ContactMap from '@/components/contact/ContactMap';
 
 export const metadata = {
   title: 'Contact Us - Ayven Soft',
@@ -11,6 +12,7 @@ export default function Contact() {
     <>
       <ContactHero />
       <ContactForm />
+      <ContactMap />
     </>
   );
 }

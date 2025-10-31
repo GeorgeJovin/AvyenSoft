@@ -18,7 +18,7 @@ const CardContainer: React.FC<CardContainerProps> = ({
   onButtonClick,
 }) => {
   return (
-    <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 w-full lg:w-80 flex flex-col justify-between border border-gray-100">
+    <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 w-full flex flex-col justify-between border border-gray-100">
       {/* Image */}
       <div className="flex justify-start items-center pt-8 pb-4 px-4">
         <Image
@@ -48,7 +48,7 @@ const CardContainer: React.FC<CardContainerProps> = ({
         <Button
           type="primary"
           size="large"
-          className="w-full h-8 text-base font-semibold bg-[#2da8ff] hover:bg-[#1593e0] border-none rounded-md"
+          className="w-full h-8 text-base font-semibold bg-[#2da8ff] border-none rounded-md"
           onClick={onButtonClick}
         >
           {buttonText}

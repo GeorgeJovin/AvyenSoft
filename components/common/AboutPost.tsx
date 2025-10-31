@@ -1,8 +1,8 @@
-
 'use client';
 
 import React from 'react';
-import { Button, Row, Col } from 'antd';
+import Image from 'next/image';
+import {  Row, Col } from 'antd';
 
 interface AboutContainerProps {
   images: string | string[];
@@ -46,38 +46,45 @@ const AboutContainer: React.FC<AboutContainerProps> = ({
         <div className="relative flex flex-col gap-6 p-4 sm:p-6 md:p-8">
           {imageArray.length === 2 ? (
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
-              <div className="w-full sm:w-1/2">
-                <img 
+              <div className="w-full sm:w-1/2 relative aspect-[4/3]">
+                <Image 
                   src={imageArray[0]} 
                   alt="Team member 1"
-                  className="w-full h-auto rounded-lg shadow-lg object-cover"
+                  fill
+                  className="rounded-lg shadow-lg object-cover"
                 />
               </div>
-              <div className="w-full sm:w-1/2 sm:mt-12">
-                <img 
+              <div className="w-full sm:w-1/2 sm:mt-12 relative aspect-[4/3]">
+                <Image 
                   src={imageArray[1]} 
                   alt="Team member 2"
-                  className="w-full h-auto rounded-lg shadow-lg object-cover"
+                  fill
+                  className="rounded-lg shadow-lg object-cover"
                 />
               </div>
             </div>
           ) : imageArray.length > 2 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               {imageArray.map((img, idx) => (
-                <img 
-                  key={idx}
-                  src={img} 
-                  alt={`Team member ${idx + 1}`}
-                  className="w-full h-auto rounded-lg shadow-lg object-cover"
-                />
+                <div key={idx} className="relative aspect-[4/3]">
+                  <Image 
+                    src={img} 
+                    alt={`Team member ${idx + 1}`}
+                    fill
+                    className="rounded-lg shadow-lg object-cover"
+                  />
+                </div>
               ))}
             </div>
           ) : (
-            <img 
-              src={imageArray[0]} 
-              alt="Feature"
-              className="w-full h-auto rounded-lg shadow-lg object-cover"
-            />
+            <div className="relative w-full aspect-[4/3]">
+              <Image 
+                src={imageArray[0]} 
+                alt="Feature"
+                fill
+                className="rounded-lg shadow-lg object-cover"
+              />
+            </div>
           )}
         </div>
       </div>
@@ -108,14 +115,12 @@ const AboutContainer: React.FC<AboutContainerProps> = ({
         
         {button && (
           <div className="flex justify-center sm:justify-start">
-            <Button 
-              type="primary" 
-              size="large"
+           <button
               onClick={onButtonClick}
-              className="bg-indigo-500 hover:bg-indigo-600 border-indigo-500 hover:border-indigo-600 font-medium px-6 sm:px-8 h-10 sm:h-12 rounded-md shadow-md hover:shadow-lg w-full sm:w-auto"
+              className="bg-[rgb(94,111,181)] font-medium px-4 sm:px-4 h-10 rounded-md w-full sm:w-auto text-white"
             >
               {button}
-            </Button>
+            </button>
           </div>
         )}
       </div>
