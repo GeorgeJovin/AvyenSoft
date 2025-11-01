@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { ConfigProvider } from 'antd';
+import ScrollToTop from '@/components/layout/ScrollToTop';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -31,6 +32,7 @@ export default function RootLayout({
           <Header />
           <main style={{overflowX : "hidden"}}>{children}</main>
           <Footer />
+          <ScrollToTop/>
         </ConfigProvider>
       </body>
     </html>
