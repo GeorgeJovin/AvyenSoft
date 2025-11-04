@@ -6,7 +6,7 @@ import { Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 const Footer = () => {
   return (
     <footer className="text-white relative overflow-hidden">
-      <div 
+      <div
         className="absolute inset-0 opacity-100 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: 'url("/assets/FooterBg.jpg")',
@@ -15,9 +15,11 @@ const Footer = () => {
       <div className="container mx-auto px-4 lg:px-8 py-12 relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-xl font-bold mb-4 text-white">Avyen Soft</h3>
+            <h3 className="text-xl font-bold mb-4 text-white">CASS Technologies</h3>
             <p className="text-gray-300 text-sm leading-relaxed mb-6">
-              AyvenSoft is a Florida-based consulting company. We provide Professional Services, Strategic Planning, and Business Planning, offering solutions to improve processes, technology, and success.
+              CASS Technologies is a Florida-based consulting company. We provide Professional
+              Services, Strategic Planning, and Business Planning, offering solutions to improve
+              processes, technology, and success.
             </p>
             <div className="flex space-x-3">
               <a
@@ -27,7 +29,7 @@ const Footer = () => {
                 className="w-10 h-10 bg-[#3b5998] rounded-full flex items-center justify-center hover:bg-[#2d4373] transition-colors"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                 </svg>
               </a>
               <a
@@ -42,58 +44,93 @@ const Footer = () => {
           </div>
 
           <div className="sm:col-span-2 grid grid-cols-2 gap-8">
-    <div>
-      <h4 className="text-lg font-semibold mb-4 text-white">Quick Links</h4>
-      <ul className="space-y-3">
-        <li><Link href="/career" className="text-gray-300 hover:text-white text-sm">Career</Link></li>
-        <li><Link href="/privacy-policy" className="text-gray-300 hover:text-white text-sm">Privacy Policy</Link></li>
-        <li><Link href="/terms-of-use" className="text-gray-300 hover:text-white text-sm">Terms of Use</Link></li>
-        <li><Link href="/disclaimer" className="text-gray-300 hover:text-white text-sm">Disclaimer</Link></li>
-      </ul>
-    </div>
+            <div>
+              <h4 className="text-lg font-semibold mb-4 text-white">Quick Links</h4>
+              <ul className="space-y-3">
+                <li>
+                  <Link href="/career" className="text-gray-300 hover:text-white text-sm">
+                    Career
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/privacy-policy" className="text-gray-300 hover:text-white text-sm">
+                    Privacy Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/terms-of-use" className="text-gray-300 hover:text-white text-sm">
+                    Terms of Use
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/disclaimer" className="text-gray-300 hover:text-white text-sm">
+                    Disclaimer
+                  </Link>
+                </li>
+              </ul>
+            </div>
 
-    <div>
-      <h4 className="text-lg font-semibold mb-4 text-white">Company</h4>
-      <ul className="space-y-3">
-        <li><Link href="/" className="text-gray-300 hover:text-white text-sm">Home</Link></li>
-        <li><Link href="/about" className="text-gray-300 hover:text-white text-sm">About Us</Link></li>
-        <li><Link href="/services" className="text-gray-300 hover:text-white text-sm">Our Services</Link></li>
-        <li><Link href="/contact" className="text-gray-300 hover:text-white text-sm">Contact Us</Link></li>
-      </ul>
-    </div>
-  </div>
+            <div>
+              <h4 className="text-lg font-semibold mb-4 text-white">Company</h4>
+              <ul className="space-y-3">
+                <li>
+                  <Link href="/" className="text-gray-300 hover:text-white text-sm">
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/about" className="text-gray-300 hover:text-white text-sm">
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services" className="text-gray-300 hover:text-white text-sm">
+                    Our Services
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contact" className="text-gray-300 hover:text-white text-sm">
+                    Contact Us
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
 
           <div>
             <h4 className="text-lg font-semibold mb-4 text-white">Contact</h4>
             <ul className="space-y-3 text-sm text-gray-300">
               <li className="flex items-center space-x-2">
                 <Mail size={18} className="flex-shrink-0" />
-                <a href="mailto:info@ayvensoft.com" className="hover:text-white transition-colors">
-                  info@ayvensoft.com
+                <a
+                  href="mailto:info@casstechnologies.com"
+                  className="hover:text-white transition-colors"
+                >
+                  info@casstechnologies.com
                 </a>
               </li>
-              <li className="flex items-center space-x-2">
+              {/* <li className="flex items-center space-x-2">
                 <Phone size={18} className="flex-shrink-0" />
                 <a href="tel:+13529957787" className="hover:text-white transition-colors">
-                  +1 (352) 995-7787
+                  +91 8604020699
                 </a>
-              </li>
+              </li> */}
               <li className="flex items-center space-x-2">
                 <Phone size={18} className="flex-shrink-0" />
-                <a href="tel:+14079025451" className="hover:text-white transition-colors">
-                  +1 (407) 902-5451
+                <a href="tel:+918604020699" className="hover:text-white transition-colors">
+                  8604020699
                 </a>
               </li>
               <li className="flex items-start space-x-2">
                 <MapPin size={18} className="mt-1 flex-shrink-0" />
-                <span>1130 E Donegan Ave, Suite 11, Kissimmee, FL 34744, Florida</span>
+                <span>430 New Park Ave, PMB 136, West Hartford, Connecticut 06110, US</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="mt-8 pt-6 text-center text-sm text-gray-400">
-          <p>Copyright 2024 – All Rights Reserved By Ayvensoft.com</p>
+          <p>Copyright 2025 – All Rights Reserved By casstechnologies.com</p>
         </div>
       </div>
     </footer>

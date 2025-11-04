@@ -1,6 +1,6 @@
-import React from "react";
-import { Button } from "antd";
-import Image from "next/image";
+import React from 'react';
+import { Button } from 'antd';
+import Image from 'next/image';
 
 interface CardContainerProps {
   image: string;
@@ -21,23 +21,13 @@ const CardContainer: React.FC<CardContainerProps> = ({
     <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 w-full flex flex-col justify-between border border-gray-100">
       {/* Image */}
       <div className="flex justify-start items-center pt-8 pb-4 px-4">
-        <Image
-          src={image}
-          alt={title}
-          width={60}
-          height={60}
-          className="object-contain"
-        />
+        <Image src={image} alt={title} width={60} height={60} className="object-contain" />
       </div>
 
       {/* Title */}
       <div className="px-4">
-        <h2 className="text-lg font-semibold text-black mb-2 text-left">
-          {title}
-        </h2>
-        <p className="text-gray-600 text-[14px] leading-relaxed text-left">
-          {description}
-        </p>
+        <h2 className="text-lg font-semibold text-black mb-2 text-left">{title}</h2>
+        <p className="text-gray-600 text-[14px] leading-relaxed text-left">{description}</p>
 
         {/* Divider */}
         <div className="border-t border-gray-300 my-4"></div>
@@ -48,7 +38,7 @@ const CardContainer: React.FC<CardContainerProps> = ({
         <Button
           type="primary"
           size="large"
-          className="w-full h-8 text-base font-semibold bg-[#2da8ff] border-none rounded-md"
+          className="w-full h-8 text-base font-semibold !bg-sky-400 hover:!bg-sky-500 border-none rounded-md"
           onClick={onButtonClick}
         >
           {buttonText}
