@@ -1,31 +1,32 @@
-"use client";
+'use client';
 import Image from 'next/image';
 import React, { useState } from 'react';
+import { Form, Input, Button } from 'antd';
+
+const { TextArea } = Input;
 
 const ContactForm = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: ''
-  });
+  const [form] = Form.useForm();
+  const [loading, setLoading] = useState(false);
 
-  const handleChange = (e: { target: { name: string; value: string; }; }) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = () => {
-    console.log('Form submitted:', formData);
-    alert('Message sent successfully!');
+  const onFinish = async (values: any) => {
+    setLoading(true);
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      console.log('Form values:', values);
+      alert('Thank you for contacting us! We will get back to you soon.');
+      form.resetFields();
+    } catch (error) {
+      alert('Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <section className="py-12 md:py-20 bg-gray-50">
       <div className="container mx-auto">
-        {/* Header - Always on Top */}
+        {/* Header */}
         <div className="text-center mb-8 md:mb-12">
           <p className="text-gray-500 text-sm md:text-base uppercase tracking-wider mb-2">
             CONTACT US
@@ -35,13 +36,13 @@ const ContactForm = () => {
           </h2>
         </div>
 
-        {/* Single Card Container */}
+        {/* Form Card */}
         <div className="bg-white rounded-3xl shadow-xl overflow-hidden mx-4">
           <div className="grid lg:grid-cols-2">
             {/* Image Section */}
             <div className="w-full h-[400px] lg:h-full relative">
               <Image
-                src="https://ayvensoft.com/wp-content/uploads/2024/12/h1-footer01.jpg"
+                src="/assets/pic/cassImage12.webp"
                 alt="Team collaboration"
                 fill
                 className="object-cover"
@@ -51,78 +52,87 @@ const ContactForm = () => {
             {/* Form Section */}
             <div className="w-full px-4 py-8 sm:px-16 flex items-center">
               <div className="w-full space-y-4">
-                {/* Name Field */}
-                <div>
-                  <label className="block text-black font-medium mb-2 text-base">
-                    Name <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="text"
+                <Form form={form} layout="vertical" onFinish={onFinish} className="space-y-4">
+                  {/* Name Field */}
+                  <Form.Item
                     name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Name"
-                    className="w-full px-5 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500 text-base"
-                  />
-                </div>
+                    label={
+                      <label className="block text-black font-medium mb-2 text-base">
+                        Name <span className="text-red-500">*</span>
+                      </label>
+                    }
+                    rules={[{ required: true, message: 'Please enter your name' }]}
+                  >
+                    <Input
+                      placeholder="Name"
+                      className="w-full px-5 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500 hover:border-gray-400 text-base transition-all duration-200"
+                    />
+                  </Form.Item>
 
-                {/* Email Field */}
-                <div>
-                  <label className="block text-black font-medium mb-2 text-base">
-                    Email <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="email"
+                  {/* Email Field */}
+                  <Form.Item
                     name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="Email"
-                    className="w-full px-5 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500 text-base"
-                  />
-                </div>
+                    label={
+                      <label className="block text-black font-medium mb-2 text-base">
+                        Email <span className="text-red-500">*</span>
+                      </label>
+                    }
+                    rules={[
+                      { required: true, message: 'Please enter your email' },
+                      { type: 'email', message: 'Please enter a valid email' },
+                    ]}
+                  >
+                    <Input
+                      placeholder="Email"
+                      className="w-full px-5 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500 hover:border-gray-400 text-base transition-all duration-200"
+                    />
+                  </Form.Item>
 
-                {/* Phone Field */}
-                <div>
-                  <label className="block text-black font-medium mb-2 text-base">
-                    Phone <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="tel"
+                  {/* Phone Field */}
+                  <Form.Item
                     name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="Phone"
-                    className="w-full px-5 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500 text-base"
-                  />
-                </div>
+                    label={
+                      <label className="block text-black font-medium mb-2 text-base">
+                        Phone <span className="text-red-500">*</span>
+                      </label>
+                    }
+                    rules={[{ required: true, message: 'Please enter your phone' }]}
+                  >
+                    <Input
+                      placeholder="Phone"
+                      className="w-full px-5 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500 hover:border-gray-400 text-base transition-all duration-200"
+                    />
+                  </Form.Item>
 
-                {/* Message Field */}
-                <div>
-                  <label className="block text-black font-medium mb-2 text-base">
-                    Message
-                  </label>
-                  <textarea
+                  {/* Message Field */}
+                  <Form.Item
                     name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Message"
-                    rows={3}
-                    className="w-full px-5 py-2 border border-gray-300 rounded-3xl focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none text-base"
-                  ></textarea>
-                </div>
+                    label={
+                      <label className="block text-black font-medium mb-2 text-base">Message</label>
+                    }
+                  >
+                    <TextArea
+                      placeholder="Message"
+                      rows={3}
+                      className="w-full px-5 py-2 border border-gray-300 rounded-3xl focus:outline-none focus:ring-2 focus:ring-indigo-500 hover:border-gray-400 resize-none text-base transition-all duration-200"
+                    />
+                  </Form.Item>
 
-                {/* Submit Button */}
-                <button
-                  onClick={handleSubmit}
-                  className="w-full bg-[rgb(94,111,181)] text-white font-semibold py-4 rounded-full transition-colors duration-300 cursor-pointer text-base uppercase tracking-wider"
-                >
-                  SEND
-                </button>
+                  {/* Submit Button */}
+                  <Form.Item>
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="w-full bg-[rgb(94,111,181)] text-white font-semibold py-4 rounded-full transition-colors duration-300 cursor-pointer text-base uppercase tracking-wider"
+                    >
+                      {loading ? 'SENDING...' : 'SEND'}
+                    </button>
+                  </Form.Item>
+                </Form>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );

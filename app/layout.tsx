@@ -9,16 +9,14 @@ import ScrollToTop from '@/components/layout/ScrollToTop';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Ayven Soft - Technology Consulting & Business Solutions',
-  description: 'Empowering success through consulting, innovation, operations, and growth solutions. Expert technology consulting for strategic planning, business planning, and process improvement.',
-  keywords: 'technology consulting, business consulting, strategic planning, process improvement, cloud solutions, Azure, Salesforce, Power BI',
+  title: 'CASS Technologies - Technology Consulting & Business Solutions',
+  description:
+    'Empowering success through consulting, innovation, operations, and growth solutions. Expert technology consulting for strategic planning, business planning, and process improvement.',
+  keywords:
+    'technology consulting, business consulting, strategic planning, process improvement, cloud solutions, Azure, Salesforce, Power BI',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -30,9 +28,9 @@ export default function RootLayout({
           }}
         >
           <Header />
-          <main style={{overflowX : "hidden"}}>{children}</main>
+          <main style={{ overflowX: 'hidden' }}>{children}</main>
           <Footer />
-          <ScrollToTop/>
+          <ScrollToTop />
         </ConfigProvider>
       </body>
     </html>

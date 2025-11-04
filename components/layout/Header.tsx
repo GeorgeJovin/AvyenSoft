@@ -29,7 +29,7 @@ const Header = () => {
   ];
 
   return (
-   <header
+    <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled ? 'bg-white shadow-lg' : 'bg-white'
       } border-b border-gray-200`}
@@ -38,11 +38,11 @@ const Header = () => {
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex items-center">
             <Image
-              src="https://ayvensoft.com/wp-content/uploads/2024/10/logo.png"
-              alt="Ayven Soft"
-              width={180}
-              height={50}
-              className="h-12 w-auto"
+              src="/assets/cassLogo.jpg"
+              alt="Cass Logo"
+              width={400}
+              height={100}
+              className="h-16 w-auto"
               priority
             />
           </Link>
@@ -52,9 +52,7 @@ const Header = () => {
                 key={link.path}
                 href={link.path}
                 className={`text-base font-medium transition-colors relative py-2 ${
-                  pathname === link.path
-                    ? 'text-gray-900'
-                    : 'text-gray-700 hover:text-gray-900'
+                  pathname === link.path ? 'text-gray-900' : 'text-gray-700 hover:text-gray-900'
                 }`}
               >
                 {link.name}

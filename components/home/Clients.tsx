@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
@@ -9,16 +9,16 @@ const Clients = () => {
 
   // 10 client logos with placeholder images
   const clients = [
-    { name: 'Neycer', image: 'https://ayvensoft.com/wp-content/uploads/2024/12/USPS.jpg' },
-    { name: 'NYC Education', image: "https://ayvensoft.com/wp-content/uploads/2024/12/NYS-DOE.jpg" },
-    { name: 'Ortum Projekt', image: 'https://ayvensoft.com/wp-content/uploads/2024/12/Oportum.jpg' },
-    { name: 'Spearhead Design', image: 'https://ayvensoft.com/wp-content/uploads/2024/12/State-of-California.jpg' },
-    { name: 'California State', image: 'https://ayvensoft.com/wp-content/uploads/2024/12/Trimedx.jpg' },
-    { name: 'Northern Trust', image: 'https://ayvensoft.com/wp-content/uploads/2024/12/State-of-California.jpg' },
-    { name: 'Tech Corp', image: 'https://ayvensoft.com/wp-content/uploads/2024/12/Travelers.jpg' },
-    { name: 'Global Industries', image: 'https://ayvensoft.com/wp-content/uploads/2024/12/Trimedx.jpg' },
-    { name: 'Innovation Labs', image: 'https://ayvensoft.com/wp-content/uploads/2024/12/USPS.jpg' },
-    { name: 'Digital Solutions', image: 'https://ayvensoft.com/wp-content/uploads/2024/12/NYS-DOE.jpg' },
+    { name: 'Neycer', image: '/assets/pic/cassImage3.webp' },
+    { name: 'NYC Education', image: '/assets/pic/cassImage4.webp' },
+    { name: 'Ortum Projekt', image: '/assets/pic/cassImage5.webp' },
+    { name: 'Spearhead Design', image: '/assets/pic/cassImage6.webp' },
+    { name: 'California State', image: '/assets/pic/cassImage7.webp' },
+    { name: 'Northern Trust', image: '/assets/pic/cassImage6.webp' },
+    { name: 'Tech Corp', image: '/assets/pic/cassImage8.webp' },
+    { name: 'Global Industries', image: '/assets/pic/cassImage9.webp' },
+    { name: 'Innovation Labs', image: '/assets/pic/cassImage10.webp' },
+    { name: 'Digital Solutions', image: '/assets/pic/cassImage11.webp' },
   ];
 
   // Check if mobile view
@@ -26,24 +26,21 @@ const Clients = () => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   // Split clients for different views
-  const desktopSlides = [
-    clients.slice(0, 5),
-    clients.slice(5, 10)
-  ];
+  const desktopSlides = [clients.slice(0, 5), clients.slice(5, 10)];
 
   const mobileSlides = [
     clients.slice(0, 2),
     clients.slice(2, 4),
     clients.slice(4, 6),
     clients.slice(6, 8),
-    clients.slice(8, 10)
+    clients.slice(8, 10),
   ];
 
   const totalSlides = isMobile ? mobileSlides.length : desktopSlides.length;
@@ -77,12 +74,10 @@ const Clients = () => {
     <section className="py-12 bg-white">
       <div className="mx-4">
         <div className="text-center mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-            Our Clients:
-          </h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Our Clients:</h2>
         </div>
 
-        <div 
+        <div
           className="relative flex items-center justify-center"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
@@ -110,7 +105,7 @@ const Clients = () => {
 
           {/* Carousel Container */}
           <div className="overflow-hidden mx-8 md:mx-16 w-full">
-            <div 
+            <div
               className="flex transition-transform duration-700 ease-in-out"
               style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
@@ -118,10 +113,7 @@ const Clients = () => {
                 <div key={slideIndex} className="min-w-full">
                   <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
                     {slideClients.map((client, index) => (
-                      <div
-                        key={index}
-                        className="flex items-center justify-center"
-                      >
+                      <div key={index} className="flex items-center justify-center">
                         <Image
                           src={client.image}
                           alt={client.name}
@@ -149,12 +141,7 @@ const Clients = () => {
               stroke="currentColor"
               viewBox="0 0 24 24"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
         </div>
