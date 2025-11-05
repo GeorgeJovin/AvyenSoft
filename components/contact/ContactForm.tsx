@@ -1,39 +1,43 @@
 'use client';
 import { useState } from 'react';
-import { Form, Input, Button, message as antMessage } from 'antd';
+import { Button, message as antMessage } from 'antd';
 import { Mail, Phone, MapPin } from 'lucide-react';
 
-const { TextArea } = Input;
-
 const ContactForm = () => {
-  const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
 
-  const onFinish = async (values: any) => {
-    setLoading(true);
-    try {
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(values),
-      });
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-      const data = await response.json();
-
-      if (response.ok && data.success) {
-        antMessage.success('Thank you for contacting us! We will get back to you soon.');
-        form.resetFields();
-      } else {
-        throw new Error(data.message || 'Failed to send email');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      antMessage.error('Something went wrong. Please try again later.');
-    } finally {
-      setLoading(false);
+    const form = e.currentTarget;
+    if (!form.checkValidity()) {
+      form.reportValidity(); // ✅ triggers browser validation popup
+      return;
     }
+
+    const formData = new FormData(form);
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+    const phone = formData.get('phone') as string;
+    const message = formData.get('message') as string;
+
+    const subject = encodeURIComponent(`Inquiry from ${name} via Contact Form`);
+    const body = encodeURIComponent(
+      `Dear Cass Technology Team,\n\n` +
+        `I hope this message finds you well.\n\n` +
+        `My name is ${name} and I would like to get in touch regarding your services.\n\n` +
+        `Here are my contact details:\n` +
+        `Email: ${email}\n` +
+        `Phone: ${phone}\n\n` +
+        `Message: \n${message || 'N/A'}\n\n` +
+        `Looking forward to hearing from you soon.\n\nBest regards,\n${name}`
+    );
+
+    const mailtoLink = `mailto:info@casscg.com?subject=${subject}&body=${body}`;
+    window.location.href = mailtoLink;
+
+    antMessage.success('Your email client is opening. Please review and send your message.');
+    form.reset();
   };
 
   return (
@@ -41,99 +45,93 @@ const ContactForm = () => {
       <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-8">
           {/* Left Column - Form */}
-          <div className="bg-gray-100 p-8 rounded-2xl" style={{ backgroundColor: '#EDF4F2' }}>
+          <div
+            className="bg-gray-100 py-8 px-6 lg:px-8 rounded-2xl"
+            style={{ backgroundColor: '#EDF4F2' }}
+          >
             <h2 className="text-3xl font-bold text-black mb-4">Get in Touch Now</h2>
             <p className="text-gray-700 mb-8">
               Need personalized advice? Our dedicated team is here to assist you. Reach out today
               for expert support and tailored solutions to meet your needs.
             </p>
 
-            <Form form={form} layout="vertical" onFinish={onFinish} className="space-y-6">
+            <form onSubmit={handleSubmit} noValidate={false} className="space-y-6">
               {/* Name */}
-              <Form.Item
-                name="name"
-                label={
-                  <span className="text-sm font-medium text-gray-900">
-                    Name <span className="text-red-500">*</span>
-                  </span>
-                }
-                rules={[{ required: true, message: 'Please enter your name' }]}
-              >
-                <Input
+              <div>
+                <label className="text-sm font-medium text-gray-900 block mb-2">
+                  Name <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  required
                   placeholder="Name"
-                  className="w-full px-5 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500 hover:border-gray-400 bg-white placeholder:text-gray-600 placeholder:text-sm transition-all duration-200"
-                  style={{ height: '48px' }}
+                  className="w-full px-5 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500 hover:border-gray-400 bg-white placeholder:text-gray-600 placeholder:text-sm transition-all duration-200"
                 />
-              </Form.Item>
+              </div>
 
               {/* Email */}
-              <Form.Item
-                name="email"
-                label={
-                  <span className="text-sm font-medium text-gray-900">
-                    Email <span className="text-red-500">*</span>
-                  </span>
-                }
-                rules={[
-                  { required: true, message: 'Please enter your email' },
-                  { type: 'email', message: 'Please enter a valid email' },
-                ]}
-              >
-                <Input
+              <div>
+                <label className="text-sm font-medium text-gray-900 block mb-2">
+                  Email <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  required
                   placeholder="Email"
-                  className="w-full px-5 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500 hover:border-gray-400 bg-white placeholder:text-gray-600 placeholder:text-sm transition-all duration-200"
-                  style={{ height: '48px' }}
+                  className="w-full px-5 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500 hover:border-gray-400 bg-white placeholder:text-gray-600 placeholder:text-sm transition-all duration-200"
                 />
-              </Form.Item>
+              </div>
 
               {/* Phone */}
-              <Form.Item
-                name="phone"
-                label={
-                  <span className="text-sm font-medium text-gray-900">
-                    Phone <span className="text-red-500">*</span>
-                  </span>
-                }
-                rules={[
-                      { required: true, message: 'Please enter your phone' },
-                      { 
-                        pattern: /^[+]?[(]?[0-9]{1,4}[)]?[-\s.]?[(]?[0-9]{1,4}[)]?[-\s.]?[0-9]{1,9}$/,
-                        message: 'Please enter a valid phone number'
-                      }
-                    ]}
-              >
-                <Input
+              <div>
+                <label className="text-sm font-medium text-gray-900 block mb-2">
+                  Phone <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="tel"
+                  name="phone"
+                  required
+                  pattern="^[0-9]{10}$"
+                  maxLength={10}
+                  inputMode="numeric"
+                  onInput={(e) => {
+                    e.currentTarget.value = e.currentTarget.value
+                      .replace(/[^0-9]/g, '')
+                      .slice(0, 10);
+                    e.currentTarget.setCustomValidity(''); // clear old custom message
+                  }}
+                  onInvalid={(e) => {
+                    e.currentTarget.setCustomValidity('Please enter a valid 10-digit phone number');
+                  }}
                   placeholder="Phone"
-                  className="w-full px-5 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500 hover:border-gray-400 bg-white placeholder:text-gray-600 placeholder:text-sm transition-all duration-200"
-                  style={{ height: '48px' }}
+                  className="w-full px-5 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500 hover:border-gray-400 bg-white placeholder:text-gray-600 placeholder:text-sm transition-all duration-200"
                 />
-              </Form.Item>
+              </div>
 
               {/* Message */}
-              <Form.Item
-                name="message"
-                label={<span className="text-sm font-medium text-gray-900">Message</span>}
-              >
-                <TextArea
-                  placeholder="Message"
+              <div>
+                <label className="text-sm font-medium text-gray-900 block mb-2">Message</label>
+                <textarea
+                  name="message"
                   rows={5}
-                  className="w-full px-5 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500 hover:border-gray-400 resize-none bg-white placeholder:text-gray-600 placeholder:text-sm transition-all duration-200"
+                  placeholder="Message"
+                  className="w-full px-5 py-2 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500 hover:border-gray-400 resize-none bg-white placeholder:text-gray-600 placeholder:text-sm transition-all duration-200"
                 />
-              </Form.Item>
+              </div>
 
               {/* Submit Button */}
-              <Form.Item>
-                <Button
-                  type="primary"
-                  htmlType="submit"
-                  loading={loading}
-                  className="w-full bg-[rgb(94,111,181)] hover:bg-[rgb(94,111,181)] text-white font-semibold py-4 rounded-full transition-all duration-300 text-base uppercase tracking-wider"
-                  style={{ height: '48px' }}
-                >
-                  {loading ? 'SENDING...' : 'SEND'}
-                </Button>
-              </Form.Item>
-            </Form>
+              <Button
+                type="primary"
+                htmlType="submit"
+                loading={loading}
+                className="w-full bg-[rgb(94,111,181)] hover:bg-[rgb(74,91,161)] text-white font-semibold py-4 rounded-full transition-all duration-300 text-base uppercase tracking-wider"
+                style={{ height: '48px' }}
+              >
+                {loading ? 'SENDING...' : 'SEND'}
+              </Button>
+            </form>
           </div>
 
           {/* Right Column - Contact Info */}
@@ -171,6 +169,7 @@ const ContactForm = () => {
                   430 New Park Ave, PMB 136, West Hartford, Connecticut 06110, US
                 </p>
               </div>
+
               <div className="border-t border-black"></div>
             </div>
           </div>
