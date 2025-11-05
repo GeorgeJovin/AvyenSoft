@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, message as antMessage } from 'antd';
 import { Mail, Phone, MapPin } from 'lucide-react';
 
 const { TextArea } = Input;
@@ -12,12 +12,25 @@ const ContactForm = () => {
   const onFinish = async (values: any) => {
     setLoading(true);
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      console.log('Form values:', values);
-      alert('Thank you for contacting us! We will get back to you soon.');
-      form.resetFields();
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        antMessage.success('Thank you for contacting us! We will get back to you soon.');
+        form.resetFields();
+      } else {
+        throw new Error(data.message || 'Failed to send email');
+      }
     } catch (error) {
-      alert('Something went wrong. Please try again.');
+      console.error('Error:', error);
+      antMessage.error('Something went wrong. Please try again later.');
     } finally {
       setLoading(false);
     }
@@ -81,7 +94,13 @@ const ContactForm = () => {
                     Phone <span className="text-red-500">*</span>
                   </span>
                 }
-                rules={[{ required: true, message: 'Please enter your phone number' }]}
+                rules={[
+                      { required: true, message: 'Please enter your phone' },
+                      { 
+                        pattern: /^[+]?[(]?[0-9]{1,4}[)]?[-\s.]?[(]?[0-9]{1,4}[)]?[-\s.]?[0-9]{1,9}$/,
+                        message: 'Please enter a valid phone number'
+                      }
+                    ]}
               >
                 <Input
                   placeholder="Phone"
@@ -126,7 +145,7 @@ const ContactForm = () => {
                   <Mail className="text-white" size={32} />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Email Address</h3>
-                <p className="text-gray-700">info@casstechnologies.com</p>
+                <p className="text-gray-700">info@casscg.com</p>
               </div>
 
               <div className="border-t border-black"></div>

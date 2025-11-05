@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import React, { useState } from 'react';
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, message as antMessage } from 'antd';
 
 const { TextArea } = Input;
 
@@ -12,12 +12,24 @@ const ContactForm = () => {
   const onFinish = async (values: any) => {
     setLoading(true);
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      console.log('Form values:', values);
-      alert('Thank you for contacting us! We will get back to you soon.');
-      form.resetFields();
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        antMessage.success('Thank you for contacting us! We will get back to you soon.');
+        form.resetFields();
+      } else {
+        throw new Error(data.message || 'Failed to send email');
+      }
     } catch (error) {
-      alert('Something went wrong. Please try again.');
+      antMessage.error('Something went wrong. Please try again later.');
     } finally {
       setLoading(false);
     }
@@ -32,7 +44,7 @@ const ContactForm = () => {
             CONTACT US
           </p>
           <h2 className="text-3xl md:text-3xl lg:text-3xl font-bold text-black">
-            We Alway Here To Helps You
+            We Are Always Here To Help You
           </h2>
         </div>
 
@@ -96,7 +108,13 @@ const ContactForm = () => {
                         Phone <span className="text-red-500">*</span>
                       </label>
                     }
-                    rules={[{ required: true, message: 'Please enter your phone' }]}
+                    rules={[
+                      { required: true, message: 'Please enter your phone' },
+                      { 
+                        pattern: /^[+]?[(]?[0-9]{1,4}[)]?[-\s.]?[(]?[0-9]{1,4}[)]?[-\s.]?[0-9]{1,9}$/,
+                        message: 'Please enter a valid phone number'
+                      }
+                    ]}
                   >
                     <Input
                       placeholder="Phone"
@@ -120,13 +138,15 @@ const ContactForm = () => {
 
                   {/* Submit Button */}
                   <Form.Item>
-                    <button
-                      type="submit"
-                      disabled={loading}
-                      className="w-full bg-[rgb(94,111,181)] text-white font-semibold py-4 rounded-full transition-colors duration-300 cursor-pointer text-base uppercase tracking-wider"
-                    >
-                      {loading ? 'SENDING...' : 'SEND'}
-                    </button>
+                     <Button
+                  type="primary"
+                  htmlType="submit"
+                  loading={loading}
+                  className="w-full bg-[rgb(94,111,181)] hover:bg-[rgb(94,111,181)] text-white font-semibold py-4 rounded-full transition-all duration-300 text-base uppercase tracking-wider"
+                  style={{ height: '48px' }}
+                >
+                  {loading ? 'SENDING...' : 'SEND'}
+                </Button>
                   </Form.Item>
                 </Form>
               </div>
