@@ -14,8 +14,8 @@ Work directly with leadership to define and implement the technical vision, stra
 Utilize Oracle, SQL Server, PL/SQL, Teradata, Hadoop HIVE, Salesforce, SAP, Text files, and Excel documents. 
 Will work in various unanticipated locations throughout the U.S. Requires Masters in Computer Science, Engineering, or related and 1 year experience.
 
-Send resume to hr@casstechnologies or mail to CASS Technologies LLC 
-1310 E DONEGAN AVE Suite 11 KISSIMMEE, FLORIDA 34744.`,
+Send your resume to info@casscg.com
+430 New Park Ave, PMB 136, West Hartford, Connecticut 06110, US.`,
     },
     {
       title: 'Data Engineer',
